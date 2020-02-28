@@ -1,0 +1,22 @@
+[loggers]
+keys=root
+
+[logger_root]
+level=WARN
+handlers=file_handler
+
+[formatters]
+keys=formatter
+
+[handlers]
+keys=file_handler
+
+[handler_file_handler]
+class=logging.handlers.TimedRotatingFileHandler
+level=INFO
+formatter=formatter
+args=('<log file path>', 'W5', 0, 4)
+
+[formatter_formatter]
+format={"date":"%(asctime)s","level":"%(levelname)s","file":"%(filename)s","module":"%(module)s","function":"%(funcName)s","lineno":"%(lineno)d","url":"%(url)s", "statusCode": "%(statusCode)s", "time": "%(rst)s", "msg": "%(message)s"}
+datefmt=%Y-%m-%d %H:%M:%S
